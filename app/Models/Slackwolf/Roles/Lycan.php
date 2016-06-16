@@ -1,0 +1,23 @@
+<?php
+namespace App\Models\Slackwolf\Roles;
+
+use App\Models\Slackwolf\Role;
+
+class Lycan extends Role
+{
+	public function appearsAsWerewolf() {
+		return true;
+	}
+
+	public function isWerewolfTeam() {
+		return false;
+	}
+
+	public function getName() {
+		return Role::LYCAN;
+	}
+
+	public function getDescription() {
+		return "A villager who appears to the Seer as a Werewolf.";
+	}
+}
