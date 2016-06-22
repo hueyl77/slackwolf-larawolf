@@ -1,10 +1,11 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\Formatter\PlayerListFormatter;
-use Slackwolf\Game\Game;
+use App\Models\Slackwolf\Formatter\PlayerListFormatter;
+use App\Models\Slackwolf\Game;
 
 class DeadCommand extends Command
 {

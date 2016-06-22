@@ -1,10 +1,11 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\GameState;
-use Slackwolf\Game\Formatter\PlayerListFormatter;
+use App\Models\Slackwolf\GameState;
+use App\Models\Slackwolf\Formatter\PlayerListFormatter;
 
 class LeaveCommand extends Command
 {

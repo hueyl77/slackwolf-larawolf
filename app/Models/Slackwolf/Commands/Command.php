@@ -1,8 +1,9 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
-use Slack\RealTimeClient;
-use Slackwolf\Game\GameManager;
-use Slackwolf\Message\Message;
+use App\Models\Slack\RealTimeClient;
+use App\Models\Slackwolf\GameManager;
+use App\Models\Slackwolf\Message;
 
 abstract class Command
 {

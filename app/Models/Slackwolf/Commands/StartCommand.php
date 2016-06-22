@@ -1,11 +1,13 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\Formatter\UserIdFormatter;
-use Slackwolf\Game\RoleStrategy;
-use Slackwolf\Game\GameState;
+
+use App\Models\Slackwolf\Formatter\UserIdFormatter;
+use App\Models\Slackwolf\RoleStrategy;
+use App\Models\Slackwolf\GameState;
 
 class StartCommand extends Command
 {

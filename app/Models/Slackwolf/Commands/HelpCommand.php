@@ -1,9 +1,10 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Slack\Channel;
 use Slack\ChannelInterface;
 use Slack\DirectMessageChannel;
-use Slackwolf\Game\Role;
+use App\Models\Slackwolf\Role;
 
 class HelpCommand extends Command
 {

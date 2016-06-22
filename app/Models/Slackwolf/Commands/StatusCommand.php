@@ -1,10 +1,12 @@
-<?php namespace Slackwolf\Game\Commands;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\Formatter\GameStatusFormatter;
-use Slackwolf\Game\Game;
+
+use App\Models\Slackwolf\Formatter\GameStatusFormatter;
+use App\Models\Slackwolf\Game;
 
 class StatusCommand extends Command
 {
