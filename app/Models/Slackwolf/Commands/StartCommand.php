@@ -1,11 +1,13 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\Formatter\UserIdFormatter;
-use Slackwolf\Game\RoleStrategy;
-use Slackwolf\Game\GameState;
+
+use App\Models\Slackwolf\Formatter\UserIdFormatter;
+use App\Models\Slackwolf\RoleStrategy;
+use App\Models\Slackwolf\GameState;
 
 class StartCommand extends Command
 {
@@ -23,12 +25,12 @@ class StartCommand extends Command
         $message = $this->message;
         /** @var Game $game */
         $game;
-        
+
         $loadPlayers = true;
         // Check to see that a game does not currently exist
         if ($this->gameManager->hasGame($this->channel)) {
             $game = $this->gameManager->getGame($this->channel);
-            if ($game->getState() == GameState::LOBBY){    
+            if ($game->getState() == GameState::LOBBY){
                 $loadPlayers = false;
                 if (count($this->args) > 0 && count($game->getLobbyPlayers(0)) > 0) {
                     $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client) {
@@ -88,7 +90,7 @@ class StartCommand extends Command
 
         // Remove the bot from the player list
         foreach ($users as $key => $user) {
-            if ($user->getUsername() == getenv('BOT_NAME')) {
+            if ($user->getUsername() == env('BOT_NAME')) {
                 unset($users[$key]);
             }
         }

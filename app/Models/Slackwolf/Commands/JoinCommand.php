@@ -1,11 +1,12 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\GameState;
-use Slackwolf\Game\Formatter\PlayerListFormatter;
-use Slackwolf\Game\Formatter\UserIdFormatter;
+use App\Models\Slackwolf\GameState;
+use App\Models\Slackwolf\Formatter\PlayerListFormatter;
+use App\Models\Slackwolf\Formatter\UserIdFormatter;
 
 class JoinCommand extends Command
 {
@@ -14,14 +15,14 @@ class JoinCommand extends Command
         if ($this->channel[0] == 'D') {
             throw new Exception("Can't join a game lobby by direct message.");
         }
-        
+
         $this->game = $this->gameManager->getGame($this->channel);
 
         if ( ! $this->game) {
             throw new Exception("No game in progress.");
         }
-        
-        if ($this->game->getState() != GameState::LOBBY) { 
+
+        if ($this->game->getState() != GameState::LOBBY) {
             throw new Exception("Game in progress is not in lobby state.");
         }
     }
@@ -30,7 +31,7 @@ class JoinCommand extends Command
     {
         $userId = $this->userId;
         $game = $this->game;
-    
+
         $this->client->getChannelGroupOrDMByID($this->channel)
             ->then(function (Channel $channel) {
                 return $channel->getMembers();
@@ -42,7 +43,7 @@ class JoinCommand extends Command
                     }
                 }
             });
-            
+
         $playersList = PlayerListFormatter::format($this->game->getLobbyPlayers());
         $this->gameManager->sendMessageToChannel($this->game, "Current lobby: ".$playersList);
     }

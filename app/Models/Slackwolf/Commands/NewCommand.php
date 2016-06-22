@@ -1,11 +1,13 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use Slack\Channel;
 use Slack\ChannelInterface;
-use Slackwolf\Game\GameState;
-use Slackwolf\Game\RoleStrategy;
-use Slackwolf\Game\Formatter\PlayerListFormatter;
+
+use App\Models\Slackwolf\GameState;
+use App\Models\Slackwolf\RoleStrategy;
+use App\Models\Slackwolf\Formatter\PlayerListFormatter;
 
 class NewCommand extends Command
 {
@@ -21,7 +23,7 @@ class NewCommand extends Command
         $client = $this->client;
         $gameManager = $this->gameManager;
         $message = $this->message;
-        
+
         $loadPlayers = true;
         // Check to see that a game does not currently exist
         if ($this->gameManager->hasGame($this->channel)) {
@@ -39,7 +41,7 @@ class NewCommand extends Command
         }
 
         try {
-            $gameManager->newGame($message->getChannel(), [], new RoleStrategy\Classic());        
+            $gameManager->newGame($message->getChannel(), [], new RoleStrategy\Classic());
             $game = $gameManager->getGame($message->getChannel());
             $this->gameManager->sendMessageToChannel($game, "A new game lobby has been created.  Type !join to play the next game.");
             $userId = $this->userId;
@@ -62,6 +64,6 @@ class NewCommand extends Command
             $this->client->getChannelGroupOrDMByID($this->channel)->then(function (ChannelInterface $channel) use ($client,$e) {
                 $client->send($e->getMessage(), $channel);
             });
-        }        
+        }
     }
 }

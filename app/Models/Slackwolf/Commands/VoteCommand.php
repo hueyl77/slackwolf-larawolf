@@ -1,8 +1,11 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
-use Slackwolf\Game\Formatter\UserIdFormatter;
-use Slackwolf\Game\GameState;
+
+use App\Models\Slackwolf\Formatter\UserIdFormatter;
+use App\Models\Slackwolf\GameState;
+
 use Zend\Loader\Exception\InvalidArgumentException;
 
 class VoteCommand extends Command

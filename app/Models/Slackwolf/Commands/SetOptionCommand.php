@@ -1,8 +1,9 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Slack\DirectMessageChannel;
 use Slackwolf\Game;
-use Slackwolf\Game\Formatter\OptionFormatter;
+use App\Models\Slackwolf\Formatter\OptionFormatter;
 
 class SetOptionCommand extends Command
 {

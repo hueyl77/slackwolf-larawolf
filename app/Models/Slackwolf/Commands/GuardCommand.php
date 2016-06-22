@@ -1,15 +1,17 @@
-<?php namespace Slackwolf\Game\Command;
+<?php
+namespace App\Models\Slackwolf\Commands;
 
 use Exception;
 use InvalidArgumentException;
 use Slack\Channel;
 use Slack\ChannelInterface;
 use Slack\DirectMessageChannel;
-use Slackwolf\Game\Formatter\ChannelIdFormatter;
-use Slackwolf\Game\Formatter\UserIdFormatter;
-use Slackwolf\Game\Game;
-use Slackwolf\Game\GameState;
-use Slackwolf\Game\Role;
+
+use App\Models\Slackwolf\Formatter\ChannelIdFormatter;
+use App\Models\Slackwolf\Formatter\UserIdFormatter;
+use App\Models\Slackwolf\Game;
+use App\Models\Slackwolf\GameState;
+use App\Models\Slackwolf\Role;
 
 class GuardCommand extends Command
 {
