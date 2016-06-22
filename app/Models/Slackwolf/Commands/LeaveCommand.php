@@ -1,4 +1,4 @@
-<?php namespace Slackwolf\Game\Command;
+<?php namespace Slackwolf\Game\Commands;
 
 use Exception;
 use Slack\Channel;
@@ -21,8 +21,8 @@ class LeaveCommand extends Command
         if ( ! $this->game) {
             throw new Exception("No game in progress.");
         }
-        
-        if ($this->game->getState() != GameState::LOBBY) { 
+
+        if ($this->game->getState() != GameState::LOBBY) {
             throw new Exception("Game in progress is not in lobby state.");
         }
     }
@@ -30,8 +30,8 @@ class LeaveCommand extends Command
     public function fire()
     {
         $this->game->removeLobbyPlayer($this->userId);
-            
+
         $playersList = PlayerListFormatter::format($this->game->getLobbyPlayers());
-        $this->gameManager->sendMessageToChannel($this->game, "Current lobby: ".$playersList);    
+        $this->gameManager->sendMessageToChannel($this->game, "Current lobby: ".$playersList);
     }
 }

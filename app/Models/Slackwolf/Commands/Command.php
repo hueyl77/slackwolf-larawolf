@@ -1,4 +1,4 @@
-<?php namespace Slackwolf\Game\Command;
+<?php namespace Slackwolf\Game\Commands;
 
 use Slack\RealTimeClient;
 use Slackwolf\Game\GameManager;

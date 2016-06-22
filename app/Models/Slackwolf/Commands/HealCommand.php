@@ -1,4 +1,4 @@
-<?php namespace Slackwolf\Game\Command;
+<?php namespace Slackwolf\Game\Commands;
 
 use Exception;
 use InvalidArgumentException;
