@@ -1,7 +1,7 @@
 <?php
 namespace App\Models\Slackwolf\Commands;
 
-use App\Models\Slack\RealTimeClient;
+use Slack\RealTimeClient;
 use App\Models\Slackwolf\GameManager;
 use App\Models\Slackwolf\Message;
 
