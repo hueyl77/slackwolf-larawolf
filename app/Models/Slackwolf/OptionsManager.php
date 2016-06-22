@@ -51,12 +51,14 @@ class Option
 
 class OptionsManager
 {
-    const optionsFileName = "options.json";
+    public $optionsFileName = "options.json";
     /** @var Option[] $options */
     public $options = [];
 
     public function __construct()
     {
+        $this->optionsFileName = env("OPTIONS_FILEPATH", "options.json");
+
         $this->options[] = new Option(OptionName::changevote, OptionType::Bool, "on", "When enabled votes can be changed until the final vote is cast.");
         $this->options[] = new Option(OptionName::no_lynch, OptionType::Bool, "on", "When enabled townsfolk can vote not to lynch anybody.");
         $this->options[] = new Option(OptionName::role_beholder, OptionType::Bool, "on", "Use Beholder role in random games.");
@@ -76,9 +78,9 @@ class OptionsManager
         /*
          * Load existing options
          */
-        if (file_exists(OptionsManager::optionsFileName)) {
+        if (file_exists($this->optionsFileName)) {
             try {
-                $optionsLoaded = json_decode(file_get_contents(OptionsManager::optionsFileName));
+                $optionsLoaded = json_decode(file_get_contents($this->optionsFileName));
                 foreach($optionsLoaded as $loadedOption)
                 {
                     /** @var Option $loadedOption */
@@ -98,7 +100,7 @@ class OptionsManager
     public function saveOptions()
     {
         try {
-            file_put_contents(OptionsManager::optionsFileName,json_encode($this->options));
+            file_put_contents($this->optionsFileName,json_encode($this->options));
         } catch (Exception $e) {}
     }
 
